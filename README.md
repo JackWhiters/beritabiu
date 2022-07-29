@@ -1,1 +1,1 @@
-APlikasi Berita BIU
+Aplikasi Berita BIU
