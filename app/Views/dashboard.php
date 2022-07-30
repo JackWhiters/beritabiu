@@ -1,98 +1,88 @@
-<?=$this->extend('layout/template');?>
-<?=$this->section('content');?>
+<?= $this->extend('layout/template'); ?>
+<?= $this->section('content'); ?>
 
-<div class="container-fluid">
-    <div id="pesan" data-pesan="<?=session()->getFlashdata('pesan')?>"></div>
-    <div class="row">
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-gradient-blue">
-                <div class="inner">
-                    <h3><?=esc($produk)?></h3>
-                    <p>Item Produk</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-cube"></i>
-                </div>
-                <a href="<?=base_url('item')?>" class="small-box-footer">
-                    Selengkapnya <i class="fas fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-gradient-green">
-                <div class="inner">
-                    <h3><?=esc($pemasok)?></h3>
-                    <p>Pemasok</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-truck"></i>
-                </div>
-                <a href="<?=base_url('pemasok')?>" class="small-box-footer">
-                    Selengkapnya <i class="fas fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-gradient-maroon">
-                <div class="inner">
-                    <h3><?=esc($pelanggan)?></h3>
-                    <p>Pelanggan</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <a href="<?=base_url('pelanggan')?>" class="small-box-footer">
-                    Selengkapnya <i class="fas fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-gradient-purple">
-                <div class="inner">
-                    <h3><?=esc($pengguna)?></h3>
-                    <p>Pengguna</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <a href="<?=base_url('user')?>" class="small-box-footer">
-                    Selengkapnya <i class="fas fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- ./col -->
-    </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Total Penjualan -->
-            <div class="card">
-                <div class="card-header border-0">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Total Penjualan</h3>
-                        <a href="javascript:void(0);">Lihat Laporan</a>
+<div class="page-heading">
+    <h3>Profile Statistics</h3>
+</div>
+<div class="page-content">
+    <section class="row">
+        <div class="col-12 col-lg-12">
+            <div class="row">
+                <div class="col-12 col-lg-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body py-4-5 px-5">
+                            <div class="row">
+                                <div class="col-md-2 col-2">
+                                    <div class="stats-icon purple">
+                                        <i class="iconly-boldShow"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 col-10">
+                                    <h6 class="text-muted font-semibold">
+                                        Berita Disetujui
+                                    </h6>
+                                    <h6 class="font-extrabold mb-0">1</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="position-relative mb-4">
-                        <canvas id="laporan-penjualan" height="100"></canvas>
+                <div class="col-12 col-lg-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body py-4-5 px-5">
+                            <div class="row">
+                                <div class="col-md-2 col-2">
+                                    <div class="stats-icon blue">
+                                        <i class="iconly-boldProfile"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 col-10">
+                                    <h6 class="text-muted font-semibold">Berita Belum Disetujui</h6>
+                                    <h6 class="font-extrabold mb-0">3</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body py-4 px-5">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl">
+                                    <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                </div>
+                                <div class="ms-3 name">
+                                    <h5 class="font-bold">John Duck</h5>
+                                    <h6 class="text-muted mb-0">Dosen</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.card -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Profile Visit</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="chart-profile-visit"></div> -->
+                            <div class="text-center">
+                                <h1>Selamat Datang</h1>
+                                <h2 class="mt-3 mb-5">John Duck</h2>
+                                <h4>Mau input berita apa hari ini ?</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div><!-- /.container-fluid -->
-<?=$this->endSection();?>
+    </section>
+</div>
+<?= $this->endSection(); ?>
 
-<?=$this->section('js');?>
-<script src="<?=base_url('plugins/chart.js/Chart.min.js')?>"></script>
-<script src="<?=base_url('js/dashboard.js')?>"></script>
-<?=$this->endSection();?>
+<?= $this->section('js'); ?>
+<script src="<?= base_url('plugins/chart.js/Chart.min.js') ?>"></script>
+<script src="<?= base_url('js/dashboard.js') ?>"></script>
+<?= $this->endSection(); ?>

@@ -32,14 +32,14 @@ class User extends BaseController
 
     public function ajax()
     {
-        if($this->request->isAJAX()){
+        if ($this->request->isAJAX()) {
             return DataTables::use('tb_users')
-            ->select('tb_users.id, email, username, nama, alamat, tb_users.id_role AS role, tb_roles.keterangan AS keterangan')
-            ->join('tb_roles', 'tb_roles.id = id_role')->where(['tb_users.id !=' => 1])->where(['tb_users.id !=' => session('id')])
-            ->make();
+                ->select('tb_users.id, email, username, nama, alamat, tb_users.id_role AS role, tb_roles.keterangan AS keterangan')
+                ->join('tb_roles', 'tb_roles.id = id_role')->where(['tb_users.id !=' => 1])->where(['tb_users.id !=' => session('id')])
+                ->make();
         }
     }
-    
+
     public function tambah()
     {
         if ($this->request->isAJAX()) {
@@ -144,7 +144,7 @@ class User extends BaseController
         if ($this->request->isAJAX()) {
             $id = $this->request->getPost('id', FILTER_SANITIZE_NUMBER_INT);
             // jika id user yang akan di hapus di temukan, lanjut proses
-            if($this->userModel->find($id)){
+            if ($this->userModel->find($id)) {
                 // fitur hapus user hanya untuk superadmin, selain itu dilarang
                 if (user()->id == 1) {
                     $this->userModel->where('id !=', 1)->where('id !=', session('id'))->where('id', $id)->delete();

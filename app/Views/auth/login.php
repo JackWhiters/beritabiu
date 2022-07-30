@@ -1,50 +1,56 @@
 <?= $this->extend('auth/auth_template'); ?>
 <?= $this->section('auth'); ?>
 
-<div class="login-logo">
-    <a href="javascript:void(0)"><b><?= esc($title); ?></b></a>
-</div>
-<!-- /.login-logo -->
-<div class="card">
-    <div class="card-body login-card-body">
-        <p class="login-box-msg">Silahkan login dulu!</p>
-        <?= form_open(base_url('auth/login')); ?>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus>
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fas fa-user"></span>
+<div id="auth">
+    <div class="row h-100">
+        <div class="col-lg-5 col-12">
+            <div id="auth-left">
+                <div class="auth-logo">
+                    <a href="#" class="small fs-1">Berita BIU</a>
+                    <!-- <a href="index.html"><img src="<?= base_url('assets/images/logo/logo.svg') ?>" alt="Logo"></a> -->
+                </div>
+                <h1 class="auth-title">Log in.</h1>
+                <p class="auth-subtitle mb-5">Masuk ke dalam dasahboard dengan akun yang sudah terdaftar.</p>
+
+                <?= form_open(base_url('auth/login')); ?>
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="text" class="form-control form-control-xl" id="username" name="username" placeholder="Username" autofocus>
+                    <div class="form-control-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+                </div>
+                <div class="form-group position-relative has-icon-left mb-4">
+                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" autocomplete="off">
+                    <!-- <div class="input-group-append show-password">
+                        <div class="input-group-text">
+                            <i class="bi bi-eye-slash"></i>
+                        </div>
+                    </div> -->
+                    <small class="invalid-feedback"></small>
+                    <div class="form-control-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                </div>
+                <div class="form-check form-check-lg d-flex align-items-end">
+                    <input class="form-check-input me-2" type="checkbox" id="remember" name="remember">
+                    <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                        Ingat saya diperangkat ini
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5" id="login">Log in</button>
+                <?= form_close(); ?>
+                <div class="text-center mt-5 text-lg fs-4">
+                    <p class="text-gray-600">Tidak Punya Akun ? <a href="<?= base_url('auth/register') ?>" class="font-bold">Daftar</a>.</p>
+                    <!-- <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p> -->
                 </div>
             </div>
-            <small class="invalid-feedback"></small>
         </div>
-        <div class="input-group mb-3">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
-            <div class="input-group-append show-password">
-                <div class="input-group-text">
-                    <span class="fas fa-eye-slash"></span>
-                </div>
+        <div class="col-lg-7 d-none d-lg-block">
+            <div id="auth-right">
+
             </div>
-            <small class="invalid-feedback"></small>
         </div>
-        <div class="row">
-            <div class="col-8">
-                <div class="icheck-primary">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember Me</label>
-                </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block" id="login">Login</i></button>
-            </div>
-            <!-- /.col -->
-        </div>
-        <?= form_close(); ?>
-        <hr>
-        <a href="<?= base_url('auth/lupa-password') ?>">Lupa Password!</a>
     </div>
-    <!-- /.login-card-body -->
 </div>
 
 <?= $this->endSection(); ?>

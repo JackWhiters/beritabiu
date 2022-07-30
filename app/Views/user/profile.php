@@ -1,10 +1,27 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
-<div class="container-fluid">
-    <div class="row">
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Profile</h3>
+                <p class="text-subtitle text-muted">Berisi informasi terkait akunmu</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="row">
         <div class="col-md-3">
             <!-- Profile Image -->
-            <div class="card card-primary card-outline">
+            <div class="card card-primary">
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="img-fluid img-circle avatar" src="<?= base_url('uploads/profile/' . esc($user->avatar)) ?>">
@@ -12,13 +29,10 @@
                     <h3 class="profile-username text-center"></h3>
                     <p class="text-muted text-center">Tanggal Daftar : <?= esc(date('d M Y', strtotime($user->created_at))); ?></p>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col -->
         <div class="col-md-9">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary">
                 <div class="card-body">
                     <?= form_open_multipart(base_url('/user/ubah'), ['csrf_id' => 'token']); ?>
                     <div class="form-group row">
@@ -58,13 +72,12 @@
                     </div>
                     <div class="form-group row">
                         <label for="avatar" class="col-sm-2 col-form-label">Photo Profile</label>
-                        <div class="col-sm-2 d-none">
+                        <!-- <div class="col-sm-2 d-none">
                             <img class="img-thumbnail" id="img-preview">
-                        </div>
-                        <div class="col-sm-4">
+                        </div> -->
+                        <div class="col-sm-10">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="avatar" name="avatar">
-                                <label class="custom-file-label" for="avatar">Upload Photo</label>
+                                <input type="file" class="image-resize-filepond" id="avatar" name="avatar">
                                 <small class="invalid-feedback"></small>
                             </div>
                         </div>
@@ -78,13 +91,10 @@
                         </div>
                     </div>
                     <?= form_close(); ?>
-                </div><!-- /.card-body -->
+                </div>
             </div>
-            <!-- /.card -->
         </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
+    </section>
 </div>
 <?= $this->endSection(); ?>
 
@@ -122,4 +132,6 @@
     });
 </script>
 
-<?php $this->endSection(); ?>
+<script src="<?= base_url('plugins/chart.js/Chart.min.js') ?>"></script>
+<script src="<?= base_url('js/dashboard.js') ?>"></script>
+<?= $this->endSection(); ?>

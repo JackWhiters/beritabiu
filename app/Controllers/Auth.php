@@ -23,6 +23,11 @@ class Auth extends BaseController
         echo view('auth/login', ['title' => 'Login Admin']);
     }
 
+    public function register()
+    {
+        return view('auth/register', ['title' => 'Daftar Admin']);
+    }
+
     public function proses()
     {
         // jika methodnya post lanjut proses 

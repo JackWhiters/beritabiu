@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 02, 2022 at 10:16 PM
--- Server version: 10.3.34-MariaDB-0+deb10u1
--- PHP Version: 7.3.33-1+0~20211119.91+debian10~1.gbp618351
+-- Host: 127.0.0.1
+-- Generation Time: Jul 30, 2022 at 08:59 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -203,7 +203,7 @@ INSERT INTO `tb_item` (`id`, `barcode`, `nama_item`, `id_kategori`, `id_unit`, `
 (3, 'A0003', 'Rokok Djarum Super', 6, 6, 1, 20000, 20, 'gambar.jpg', '2021-10-19 22:33:55', '2022-05-02 22:06:50', '0000-00-00 00:00:00'),
 (4, 'A0004', 'Garam Dapur', 4, 5, 1, 2500, 20, 'gambar.jpg', '2021-10-19 22:34:42', '2022-05-02 22:07:20', '0000-00-00 00:00:00'),
 (5, 'A0005', 'Tolak Angin', 3, 2, 1, 3000, 45, 'gambar.jpg', '2021-10-20 21:26:17', '2022-05-02 22:07:51', '0000-00-00 00:00:00'),
-(6, 'A0006', 'Gula Pasir', 4, 4, 1, 10000, 30, 'gambar.jpg', '2021-10-20 22:31:17', '2022-05-02 22:08:20', '0000-00-00 00:00:00'),
+(6, 'A0006', 'Gula Pasir', 4, 4, 1, 10000, 20, 'gambar.jpg', '2021-10-20 22:31:17', '2022-06-15 10:17:34', '0000-00-00 00:00:00'),
 (7, 'A0007', 'Sprit', 2, 1, 3, 5000, 20, 'gambar.jpg', '2022-01-21 18:57:34', '2022-05-02 22:08:52', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -299,7 +299,7 @@ CREATE TABLE `tb_pengaturan` (
 --
 
 INSERT INTO `tb_pengaturan` (`nama_toko`, `no_telp`, `alamat`) VALUES
-('Khalisa Online Store', '081295018034', 'Jl. Babakan Wadana No.39, Cipamokolan, Rancasari, Kota Bandung');
+('Prototype Online Sto', '081295018034', 'Jl. Babakan Wadana No.39, Cipamokolan, Rancasari, Kota Bandung');
 
 -- --------------------------------------------------------
 
@@ -324,6 +324,13 @@ CREATE TABLE `tb_penjualan` (
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_penjualan`
+--
+
+INSERT INTO `tb_penjualan` (`id`, `invoice`, `id_pelanggan`, `total_harga`, `diskon`, `total_akhir`, `tunai`, `kembalian`, `catatan`, `tanggal`, `id_user`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'INV2206150001', 1, 100000, 0, 100000, 100000, 0, '', '2022-06-15', 20, '::1', '2022-06-15 10:17:34', '2022-06-15 10:17:34', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -395,6 +402,13 @@ CREATE TABLE `tb_transaksi` (
   `deleted_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`id_transaksi`, `id_penjualan`, `id_item`, `harga_item`, `jumlah_item`, `diskon_item`, `subtotal`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 6, 10000, 10, 0, 100000, '::1', '2022-06-15 10:17:34', '2022-06-15 10:17:34', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -449,9 +463,10 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `email`, `username`, `password`, `nama`, `alamat`, `id_role`, `avatar`, `status`, `token`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'sejatordev@gmail.com', 'superadmin', '$2y$10$ikpwdLGFPpQviC9GtExuYeBFAi.JbExd8IEvdQJw8sd7qZua9mb9O', 'Super Admin', 'Bandung', 1, 'avatar.jpg', 1, '7b9abf00d73a783b2f1559517823fd60331f9b0ae065f68b732be0a364ab7347', '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 22:02:14', NULL),
-(2, 'admin@gmail.com', 'admin', '$2y$10$hWdssQht7eBT21mncETcQeyTYimAT8K1rSKgRwBugGBOJcyuQgkTy', 'Administrator', 'Boyolali', 2, 'avatar.jpg', 1, 'bdbc976f1212965d03dcce1fecbcc811d3c817b7efd1aa61c090b5d7913b895f', '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:03', NULL),
-(3, 'kasir@gmail.com', 'kasir', '$2y$10$eEd2VoX5fOImeW0t20ojpuReyDOwN0i3iFbd9YPaPPCQVqGmjwYeC', 'Kasir', 'Bandung', 3, 'avatar.jpg', 1, NULL, '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:08', NULL);
+(1, 'afterdusk55@gmail.com', 'superadmin', 'admin', 'Super Admin', 'Bandung', 1, 'avatar.jpg', 1, '35083a6ee73d98bd1e535b752c335979562481afed79ae2e627f2deba1c61005', '0.0.0.0', '2021-10-12 18:29:41', '2022-06-15 09:49:17', NULL),
+(2, 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Boyolali', 2, 'avatar.jpg', 1, 'bdbc976f1212965d03dcce1fecbcc811d3c817b7efd1aa61c090b5d7913b895f', '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:03', NULL),
+(3, 'kasir@gmail.com', 'kasir', '$2y$10$eEd2VoX5fOImeW0t20ojpuReyDOwN0i3iFbd9YPaPPCQVqGmjwYeC', 'Kasir', 'Bandung', 3, 'avatar.jpg', 1, NULL, '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:08', NULL),
+(20, 'superadmin@gmail.com', 'superadmin1', '$2y$10$Mr2UTVmTnbh5RIt5KPTxYODuhcQgPMikJCRPfsXyGV4w9W7N.8tW.', 'Pemilik', 'Jl.bintara Raya\r\n', 1, 'avatar.jpg', 0, 'ea540a9b4c399334a7329457cfda9fd17d1cbdf6bea7ad44ceba6bebce932bfe', '::1', '2022-06-15 10:13:27', '2022-06-15 10:13:27', NULL);
 
 --
 -- Indexes for dumped tables
@@ -574,7 +589,7 @@ ALTER TABLE `tb_pemasok`
 -- AUTO_INCREMENT for table `tb_penjualan`
 --
 ALTER TABLE `tb_penjualan`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_roles`
@@ -592,7 +607,7 @@ ALTER TABLE `tb_stok`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_unit`
@@ -604,7 +619,7 @@ ALTER TABLE `tb_unit`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

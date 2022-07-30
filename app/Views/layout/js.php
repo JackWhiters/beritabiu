@@ -1,3 +1,11 @@
+<script src="<?= base_url('assets/js/app.js') ?>"></script>
+<script src="<?= base_url('assets/js/pages/dashboard.js') ?>"></script>
+<script src="<?= base_url('assets/js/extensions/datatables.js') ?>"></script>
+
+<script src="<?= base_url('assets/js/extensions/summernote.js') ?>"></script>
+
+<script src="<?= base_url('assets/js/extensions/filepond.js') ?>"></script>
+
 <!-- jQuery -->
 <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
 <!-- Bootstrap 4 -->
