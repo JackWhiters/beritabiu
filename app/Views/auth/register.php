@@ -6,9 +6,9 @@
     <div class="row h-100">
         <div class="col-lg-5 col-12">
             <div id="auth-left">
-                <div class="auth-logo">
-                    <a href="#" class="small fs-2">Berita BIU</a>
-                    <!-- <a href="index.html"><img src="<?= base_url('assets/images/logo/logo.svg') ?>" alt="Logo"></a> -->
+                <div class="auth-logo mb-3">
+                    <!-- <a href="#" class="small fs-1">Berita BIU</a> -->
+                    <a href="<?= base_url('auth') ?>"><img src="<?= base_url('assets/images/logo/logo2.png') ?>" alt="Logo" style="width: 220px; height: 120px;"></a>
                 </div>
                 <h1 class="auth-title">Daftar</h1>
                 <p class="auth-subtitle mb-5">Masukan datamu untuk daftar.</p>

@@ -35,47 +35,39 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item">
-                    <a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
+                    <a href="<?= base_url('admin') ?>" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="<?= base_url('berita/tambah') ?>" class='sidebar-link'>
+                    <a href="<?= base_url('user') ?>" class='sidebar-link'>
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Akun</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="<?= base_url('#') ?>" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Tambah Berita</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="<?= base_url('berita') ?>" class='sidebar-link'>
+                    <a href="<?= base_url('#') ?>" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Tabel Berita</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="<?= base_url('user/profile') ?>" class='sidebar-link'>
+                    <a href="<?= base_url('#') ?>" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Profil</span>
                     </a>
                 </li>
-
-                <li class="sidebar-item">
-                    <a href="<?= base_url('admin') ?>" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Admin Link Dummy</span>
-                    </a>
-                </li>
-                <?php if (esc(get_user('id_role') == 1)) : ?>
-                    <li class="sidebar-item">
-                        <a href="<?= base_url('user') ?>" class='sidebar-link'>
-                            <i class="bi bi-collection-fill"></i>
-                            <span>Akun</span>
-                        </a>
-                    </li>
-                <?php endif ?>
 
                 <!-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>

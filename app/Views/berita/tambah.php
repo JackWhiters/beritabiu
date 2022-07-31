@@ -43,6 +43,18 @@
                                     </div>
                                     <div class="col-md-12 col-12">
                                         <div class="form-group">
+                                            <label for="first-name-column">Kategori Berita</label>
+                                            <select class="form-select" name="kategori" id="kategori">
+                                                <option value="">Pilih Kategori</option>
+                                                <?php foreach (esc($kategori) as $data) : ?>
+                                                    <option value="<?= esc($data->id) ?>"><?= esc($data->kategori)  ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <small class="invalid-feedback"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
                                             <label for="first-name-column">Isi Berita</label>
                                             <div id="summernote"></div>
                                         </div>
