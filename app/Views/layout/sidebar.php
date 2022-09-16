@@ -3,10 +3,9 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="#" class="small fs-5">Berita BIU</a>
-                    <!-- <a href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets/images/logo/logo.svg') ?>" alt="Logo" srcset="">Berita BIU</a> -->
+                    <a href="<?= base_url('dashboard') ?>"><img src="<?= base_url('assets/images/logo/logo2.png') ?>" alt="Logo" style="width: 120px; height: 60px;"></a>
                 </div>
-                <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
+                <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2" opacity=".3"></path>
@@ -41,314 +40,118 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="<?= base_url('berita/tambah') ?>" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Tambah Berita</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="<?= base_url('berita') ?>" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Tabel Berita</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="<?= base_url('user/profile') ?>" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Profil</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="<?= base_url('admin') ?>" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Admin Link Dummy</span>
-                    </a>
-                </li>
                 <?php if (esc(get_user('id_role') == 1)) : ?>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-newspaper"></i>
+                            <span>Berita</span>
+                        </a>
+                        <ul class="submenu ">
+                            <!-- <li class="submenu-item ">
+                                <a href="<?= base_url('berita') ?>">Tambah Berita</a>
+                            </li> -->
+                            <li class="submenu-item ">
+                                <a href="<?= base_url('berita') ?>">Tabel Berita</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="<?= base_url('berita/tambah') ?>">Tambah Berita</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php endif ?>
+
+                <?php if (esc(get_user('id_role') == 2)) : ?>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-newspaper"></i>
+                            <span>Berita</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="<?= base_url('berita/disetujui') ?>">Sudah Disetujui</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="<?= base_url('berita/pending') ?>">Belum Disetujui</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php endif ?>
+
+                <!-- <?php if (esc(get_user('id_role') == 2)) : ?>
                     <li class="sidebar-item">
-                        <a href="<?= base_url('user') ?>" class='sidebar-link'>
-                            <i class="bi bi-collection-fill"></i>
-                            <span>Akun</span>
+                        <a href="<?= base_url('berita') ?>" class='sidebar-link'>
+                            <i class="bi bi-newspaper"></i>
+                            <span>Tabel Berita</span>
+                        </a>
+                    </li>
+                <?php endif ?> -->
+
+                <?php if (esc(get_user('id_role') == 1 || get_user('id_role') == 2)) : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('kategori') ?>" class='sidebar-link'>
+                            <i class="bi bi-funnel-fill"></i>
+                            <span>Kategori</span>
                         </a>
                     </li>
                 <?php endif ?>
 
-                <!-- <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Layouts</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="layout-default.html">Default Layout</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-vertical-1-column.html">1 Column</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-vertical-navbar.html">Vertical Navbar</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-rtl.html">RTL Layout</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="layout-horizontal.html">Horizontal Menu</a>
-                        </li>
-                    </ul>
-                </li>
+                <?php if (esc(get_user('id_role') == 3)) : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('berita/tambah') ?>" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-plus-fill"></i>
+                            <span>Tambah Berita</span>
+                        </a>
+                    </li>
+                <?php endif ?>
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-hexagon-fill"></i>
-                        <span>Form Elements</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="form-element-input.html">Input</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-input-group.html">Input Group</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-select.html">Select</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-radio.html">Radio</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-checkbox.html">Checkbox</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-element-textarea.html">Textarea</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Layout</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pen-fill"></i>
-                        <span>Form Editor</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="form-editor-quill.html">Quill</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-ckeditor.html">CKEditor</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-summernote.html">Summernote</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="form-editor-tinymce.html">TinyMCE</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="table.html" class='sidebar-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Table</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                        <span>Datatables</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="table-datatable.html">Datatable</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="table-datatable-jquery.html">Datatable (jQuery)</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Extra UI</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pentagon-fill"></i>
-                        <span>Widgets</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-chatbox.html">Chatbox</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-pricing.html">Pricing</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-todolist.html">To-do List</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-egg-fill"></i>
-                        <span>Icons</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-icons-bootstrap-icons.html">Bootstrap Icons </a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-icons-fontawesome.html">Fontawesome</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-icons-dripicons.html">Dripicons</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-bar-chart-fill"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-chart-chartjs.html">ChartJS</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-chart-apexcharts.html">Apexcharts</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="ui-file-uploader.html" class='sidebar-link'>
-                        <i class="bi bi-cloud-arrow-up-fill"></i>
-                        <span>File Uploader</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-map-fill"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-map-google-map.html">Google Map</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-map-jsvectormap.html">JS Vector Map</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Pages</li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>Email Application</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-chat.html" class='sidebar-link'>
-                        <i class="bi bi-chat-dots-fill"></i>
-                        <span>Chat Application</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-gallery.html" class='sidebar-link'>
-                        <i class="bi bi-image-fill"></i>
-                        <span>Photo Gallery</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-checkout.html" class='sidebar-link'>
-                        <i class="bi bi-basket-fill"></i>
-                        <span>Checkout Page</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Authentication</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="auth-login.html">Login</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="auth-register.html">Register</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="auth-forgot-password.html">Forgot Password</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-x-octagon-fill"></i>
-                        <span>Errors</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="error-403.html">403</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="error-404.html">404</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="error-500.html">500</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-title">Raise Support</li>
-
-                <li class="sidebar-item  ">
-                    <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
-                        <i class="bi bi-life-preserver"></i>
-                        <span>Documentation</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
-                        <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer#donation" class='sidebar-link'>
-                        <i class="bi bi-cash"></i>
-                        <span>Donate</span>
-                    </a>
-                </li> -->
+                <?php if (esc(get_user('id_role') == 3)) : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('berita') ?>" class='sidebar-link'>
+                            <i class="bi bi-newspaper"></i>
+                            <span>Tabel Berita</span>
+                        </a>
+                    </li>
+                <?php endif ?>
 
                 <li class="sidebar-item">
-                    <a href="javascript:void(0)" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#modal-logout">
-                        <i class="bi bi-box-arrow-left"></i>
-                        <span>Logout</span>
+                    <a href="<?= base_url('user/profile') ?>" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Profil</span>
                     </a>
+                </li>
+
+                <?php if (esc(get_user('id_role') == 1 || get_user('id_role') == 2)) : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('user/index') ?>" class='sidebar-link'>
+                            <i class="bi bi-people-fill"></i>
+                            <span>User</span>
+                        </a>
+                    </li>
+                <?php endif ?>
+
+                <?php if (esc(get_user('id_role') == 1)) : ?>
+                    <li class="sidebar-item">
+                        <a href="<?= base_url('pengaturan') ?>" class='sidebar-link'>
+                            <i class="bi bi-collection-fill"></i>
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                <?php endif ?>
+
+                <li class="sidebar-item">
+                    <a href="<?= base_url('Homepage') ?>" class='btn btn-success btn-block'>
+                        <i class="bi bi-newspaper me-1"></i>
+                        Halaman BeritaBIU
+                    </a>
+                </li>
+
+                <hr>
+
+                <li class="sidebar-item">
+                    <button data-bs-toggle="modal" data-bs-target="#modal-logout" class="btn btn-danger btn-block">
+                        <i class="bi bi-box-arrow-left"> </i>
+                        Logout
+                    </button>
                 </li>
 
             </ul>

@@ -2,35 +2,40 @@
 
 namespace App\Controllers;
 
-use App\Models\KategoriModel;
+use App\Models\Kategori_Model;
 use Irsyadulibad\DataTables\DataTables;
 
-class Kategori extends BaseController {
+class Kategori extends BaseController
+{
     protected $kategoriModel;
     private $rules = [
         'kategori' => [
-            'rules' => 'required|alpha_numeric_punct|is_unique[tb_kategori.nama_kategori,id,{id}]',
+            'rules' => 'required|alpha_numeric_punct|is_unique[kategori.nama_kategori,id,{id}]',
         ],
     ];
 
-    public function __construct() {
-        $this->kategoriModel = new KategoriModel();
+    public function __construct()
+    {
+        $this->kategoriModel = new Kategori_Model();
         helper('form');
     }
 
-    public function index() {
+    public function index()
+    {
         echo view('kategori/index', ['title' => 'Daftar Kategori']);
     }
 
-    public function ajax() {
+    public function ajax()
+    {
         if ($this->request->isAJAX()) {
-            return DataTables::use ('tb_kategori')
+            return DataTables::use('kategori')
                 ->select('id, nama_kategori AS kategori')
                 ->make();
         }
     }
 
-    public function tambah() {
+    public function tambah()
+    {
         if ($this->request->isAJAX()) {
             if (!$this->validate($this->rules)) {
                 $respon = [
@@ -52,7 +57,8 @@ class Kategori extends BaseController {
             return $this->response->setJSON($respon);
         }
     }
-    public function ubah() {
+    public function ubah()
+    {
         if ($this->request->isAJAX()) {
             if (!$this->validate($this->rules)) {
                 $respon = [
@@ -61,7 +67,7 @@ class Kategori extends BaseController {
                 ];
             } else {
                 $data = [
-                    'id'            => $this->request->getPost('id', FILTER_SANITIZE_NUMBER_INT),
+                    'id'   => $this->request->getPost('id', FILTER_SANITIZE_NUMBER_INT),
                     'nama_kategori' => ucwords($this->request->getPost('kategori', FILTER_SANITIZE_STRING)),
                 ];
                 $this->kategoriModel->save($data); // simpan data
@@ -76,7 +82,8 @@ class Kategori extends BaseController {
         }
     }
 
-    public function hapus() {
+    public function hapus()
+    {
         if ($this->request->isAJAX()) {
             $id = $this->request->getGet('id', FILTER_SANITIZE_NUMBER_INT);
             if ($this->kategoriModel->find($id)) {

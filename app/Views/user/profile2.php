@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
+                <div class="card-body box-profile"> 
                     <div class="text-center">
                         <img class="img-fluid img-circle avatar" src="<?= base_url('uploads/profile/' . esc($user->avatar)) ?>">
                     </div>

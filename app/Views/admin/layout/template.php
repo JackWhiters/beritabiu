@@ -7,12 +7,20 @@
 <?= $this->renderSection('header') ?>
 <!-- Head -->
 
-<body>
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
+    <div class="preloader">
+        <div class="loading">
+            <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div id="base-url" data-url="<?= base_url(); ?>"></div>
     <div id="app">
         <!-- Main Sidebar Container -->
         <?= $this->include('admin/layout/sidebar'); ?>
 
-
+ 
 
         <div id="main">
             <header class="mb-3">

@@ -23,6 +23,7 @@ class User extends BaseController
     }
     public function index()
     {
+        $id_user = $this->session->get('id');
         $data = [
             'title' => 'Daftar User',
             'roles' => $this->userModel->getRole()
@@ -66,8 +67,8 @@ class User extends BaseController
                 // tambah data user baru 
                 $this->userModel->save($data);
                 // kirim email verifikasi
-                $auth = new Auth();
-                $auth->verifikasiAkun($email, $token);
+                // $auth = new Auth();
+                // $auth->verifikasiAkun($email, $token);
                 $respon = [
                     'validasi' => true,
                     'sukses' => true,
@@ -82,7 +83,8 @@ class User extends BaseController
     {
         // jika photo profile di update 
         if ($this->request->getFile('avatar')) {
-            $this->rules['avatar'] = 'max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/png,image/jpg,image/jpeg]|max_dims[avatar,500,500]';
+            $this->rules['avatar'] = 'max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/png,image/jpg,image/jpeg]';
+            // $this->rules['avatar'] = 'max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/png,image/jpg,image/jpeg]|max_dims[avatar,500,500]';
         }
 
         if ($this->request->isAJAX()) {
@@ -146,20 +148,19 @@ class User extends BaseController
             // jika id user yang akan di hapus di temukan, lanjut proses
             if ($this->userModel->find($id)) {
                 // fitur hapus user hanya untuk superadmin, selain itu dilarang
-                if (user()->id == 1) {
-                    $this->userModel->where('id !=', 1)->where('id !=', session('id'))->where('id', $id)->delete();
-                    $respon = [
-                        'status' => true,
-                        'pesan' => 'Data berhasil dihapus :)'
-                    ];
-                } else {
-                    $respon = [
-                        'status' => false,
-                        'pesan' => 'Tidak diizinkan!'
-                    ];
-                }
-                return $this->response->setJSON($respon);
+
+                $this->userModel->where('id !=', 1)->where('id !=', session('id'))->where('id', $id)->delete();
+                $respon = [
+                    'status' => true,
+                    'pesan' => 'Data berhasil dihapus :)'
+                ];
+            } else {
+                $respon = [
+                    'status' => false,
+                    'pesan' => 'Tidak diizinkan!'
+                ];
             }
+            return $this->response->setJSON($respon);
         }
     }
 

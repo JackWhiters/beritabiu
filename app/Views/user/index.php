@@ -2,7 +2,25 @@
 <?php $this->section('content'); ?>
 
 <div class="container-fluid">
-    <button class="btn btn-primary mb-1 tambah"><i class="fas fa-plus"></i> Tambah User</button>
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Daftar User</h3>
+                <p class="text-subtitle text-muted">Menampilkan Seluruh Data Member Yang Terdaftar Pada BeritaBIU.</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Daftar User</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-primary tambah"><i class="fa-solid fa-plus"></i> Tambah User</button>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -137,8 +155,8 @@
                 },
                 {
                     render: function(data, type, row) {
-                        let html = `<button class="btn btn-success btn-sm mr-1 edit" data-id="${row.id}" data-nama="${row.nama}" data-username="${row.username}" data-email="${row.email}" data-alamat="${row.alamat}" data-role="${row.role}"><i class="fas fa-edit"></i></button>`;
-                        html += `<button class="btn btn-danger btn-sm hapus" data-id="${row.id}"><i class="fas fa-trash"></i></button>`;
+                        let html = `<button class="btn btn-success btn-sm mr-1 edit me-2" data-id="${row.id}" data-nama="${row.nama}" data-username="${row.username}" data-email="${row.email}" data-alamat="${row.alamat}" data-role="${row.role}"><i class="fa-solid fa-pen-to-square"></i> Edit</button>`;
+                        html += `<button class="btn btn-danger btn-sm hapus" data-id="${row.id}"><i class="fa fa-trash"></i> Hapus</button>`;
                         return html;
                     }
                 }

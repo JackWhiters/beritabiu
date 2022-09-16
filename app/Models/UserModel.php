@@ -30,4 +30,15 @@ class UserModel extends Model
     {
         return $this->builder('tb_roles')->select('id, keterangan')->orderBy('id', 'DESC')->get()->getResult();
     }
+
+    
+    public function detail($id_user)
+    {
+        $builder = $this->db->table('tb_users');
+        $builder->where('id', $id_user);
+        $builder->orderBy('tb_users.id', 'DESC');
+        $query = $builder->get();
+
+        return $query->getRowArray();
+    }
 }

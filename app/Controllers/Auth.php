@@ -18,6 +18,7 @@ class Auth extends BaseController
     public function index()
     {
         if (is_login()) {
+            $id_user = $this->session->get('id');
             return redirect()->to('dashboard');
         }
         echo view('auth/login', ['title' => 'Login Admin']);

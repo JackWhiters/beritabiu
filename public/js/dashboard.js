@@ -1,39 +1,39 @@
 $(function () {
-  'use strict'
-  let pesan = $('#pesan').data('pesan')
+  "use strict";
+  let pesan = $("#pesan").data("pesan");
   if (pesan) {
     Swal.fire({
       title: pesan,
-      icon: 'error',
+      icon: "error",
       showConfirmButton: false,
       timer: 1500,
-    })
+    });
   }
   $.getJSON(`${BASE_URL}/dashboard/laporan`, function (data) {
-    let label = []
-    let total = []
+    let label = [];
+    let total = [];
     $(data).each(function (i) {
-      label.push(data[i].bulan)
-      total.push(data[i].total)
-    })
+      label.push(data[i].bulan);
+      total.push(data[i].total);
+    });
 
     var ticksStyle = {
-      fontColor: '#495057',
-      fontStyle: 'bold',
-    }
+      fontColor: "#495057",
+      fontStyle: "bold",
+    };
 
-    var mode = 'index'
-    var intersect = true
+    var mode = "index";
+    var intersect = true;
 
-    var ctx = $('#laporan-penjualan')
+    var ctx = $("#laporan-berita");
     var salesChart = new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: {
         labels: label,
         datasets: [
           {
-            backgroundColor: '#007bff',
-            borderColor: '#007bff',
+            backgroundColor: "#007bff",
+            borderColor: "#007bff",
             data: total,
           },
         ],
@@ -56,15 +56,15 @@ $(function () {
             {
               gridLines: {
                 display: true,
-                lineWidth: '4px',
-                color: 'rgba(0, 0, 0, .2)',
-                zeroLineColor: 'transparent',
+                lineWidth: "4px",
+                color: "rgba(0, 0, 0, .2)",
+                zeroLineColor: "transparent",
               },
               ticks: $.extend(
                 {
                   beginAtZero: true,
                   callback: function (value) {
-                    return value
+                    return value;
                   },
                 },
                 ticksStyle
@@ -82,6 +82,6 @@ $(function () {
           ],
         },
       },
-    })
-  })
-})
+    });
+  });
+});

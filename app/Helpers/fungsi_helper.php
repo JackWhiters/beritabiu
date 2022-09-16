@@ -1,7 +1,7 @@
 <?php
 
 const APP_VER = '1.0';
-const APP_DEV = 'Jundi Al Hafidz';
+const APP_DEV = 'Tim Dev';
 const WA_DEV  = '';
 
 if (!function_exists('rupiah')) {

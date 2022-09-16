@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <hr>
-                <table class="table" id="table1">
+                <table class="table" id="tabel-user">
                     <thead>
                         <tr>
                             <th>No</th>

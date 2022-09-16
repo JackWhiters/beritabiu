@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <!-- head disini -->
 <?= $this->include('layout/header'); ?>
-
+<?php $session     = \Config\Services::session(); ?>
 <?= $this->renderSection('header') ?>
 <!-- Head -->
 
-<body>
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
+    <div class="preloader">
+        <div class="loading">
+            <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div id="base-url" data-url="<?= base_url(); ?>"></div>
     <div id="app">
         <!-- Main Sidebar Container -->
         <?= $this->include('layout/sidebar'); ?>
-
-
 
         <div id="main">
             <header class="mb-3">
@@ -20,8 +25,9 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            <!-- content disini -->
-            <?= $this->renderSection('content'); ?>
+            <div class="content">
+                <?= $this->renderSection('content'); ?>
+            </div>
 
             <!-- modal logout -->
             <div class="modal fade text-left" id="modal-logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">

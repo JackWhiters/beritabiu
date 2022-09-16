@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Auth');
+$routes->setDefaultController('Homepage');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -41,6 +41,11 @@ $routes->group('auth', function ($routes) {
 
 $routes->get('stok/masuk', 'Transaksi::index');
 $routes->get('stok/keluar', 'Transaksi::index');
+$routes->get('homepage/(:segment)', 'Homepage::detail/$1');
+$routes->get('kategoriBerita/(:segment)', 'KategoriBerita::index/$1');
+
+// Pencarian
+$routes->get('search/index', 'Search::index');
 
 /*
  * --------------------------------------------------------------------

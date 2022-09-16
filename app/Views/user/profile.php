@@ -20,7 +20,7 @@
     </div>
     <section class="row">
         <div class="col-md-3">
-            <!-- Profile Image -->
+            <!-- Profile Image --> 
             <div class="card card-primary">
                 <div class="card-body box-profile">
                     <div class="text-center">
@@ -72,12 +72,16 @@
                     </div>
                     <div class="form-group row">
                         <label for="avatar" class="col-sm-2 col-form-label">Photo Profile</label>
-                        <!-- <div class="col-sm-2 d-none">
+                        <div class="col-sm-2 d-none">
                             <img class="img-thumbnail" id="img-preview">
-                        </div> -->
-                        <div class="col-sm-10">
+                        </div>
+                        <div class="col-sm-4">
                             <div class="custom-file">
-                                <input type="file" class="image-resize-filepond" id="avatar" name="avatar">
+                                <input type="file" class="form-control" id="avatar" name="avatar" aria-describedby="inputGroupFileAddon04" aria-label="Upload" for="avatar">
+                                <!-- <input type="file" class="custom-file-input" id="avatar" name="avatar">
+                                <label class="custom-file-label" for="avatar">Upload Photo</label> -->
+                                <!-- ------------------------------------ -->
+                                <!-- <input type="file" class="image-preview-filepond" id="avatar" name="avatar"> -->
                                 <small class="invalid-feedback"></small>
                             </div>
                         </div>

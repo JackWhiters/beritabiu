@@ -34,6 +34,7 @@ class Pengaturan extends BaseController
             'nama_toko' => filter_var($post['nama_toko'], FILTER_SANITIZE_SPECIAL_CHARS),
             'no_telp'   => filter_var($post['no_telp'], FILTER_SANITIZE_SPECIAL_CHARS),
             'alamat'    => filter_var($post['alamat'], FILTER_SANITIZE_SPECIAL_CHARS),
+            'youtube'    => filter_var($post['youtube'], FILTER_SANITIZE_SPECIAL_CHARS)
         ];
         $this->pengaturan->update(null, $data);
     }

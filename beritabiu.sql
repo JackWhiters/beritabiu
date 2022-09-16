@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2022 at 08:59 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Waktu pembuatan: 02 Agu 2022 pada 07.08
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `posci4`
+-- Database: `beritabiu`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_bulan_tahun`
+-- Struktur dari tabel `tb_berita`
+--
+
+CREATE TABLE `tb_berita` (
+  `id` int(11) NOT NULL,
+  `judul` text NOT NULL,
+  `deskripsi` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `id_users` int(11) NOT NULL,
+  `thumbnail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_bulan_tahun`
 --
 
 CREATE TABLE `tb_bulan_tahun` (
@@ -35,7 +51,7 @@ CREATE TABLE `tb_bulan_tahun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_bulan_tahun`
+-- Dumping data untuk tabel `tb_bulan_tahun`
 --
 
 INSERT INTO `tb_bulan_tahun` (`id`, `bulan`, `tahun`, `bln_thn`) VALUES
@@ -175,41 +191,7 @@ INSERT INTO `tb_bulan_tahun` (`id`, `bulan`, `tahun`, `bln_thn`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_item`
---
-
-CREATE TABLE `tb_item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `barcode` varchar(50) NOT NULL,
-  `nama_item` varchar(100) NOT NULL,
-  `id_kategori` int(11) UNSIGNED NOT NULL,
-  `id_unit` int(11) UNSIGNED NOT NULL,
-  `id_pemasok` int(11) UNSIGNED NOT NULL,
-  `harga` int(11) UNSIGNED NOT NULL,
-  `stok` int(11) UNSIGNED NOT NULL,
-  `gambar` varchar(100) NOT NULL DEFAULT 'gambar.jpg',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_item`
---
-
-INSERT INTO `tb_item` (`id`, `barcode`, `nama_item`, `id_kategori`, `id_unit`, `id_pemasok`, `harga`, `stok`, `gambar`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'A0001', 'Sarimi Duo', 1, 2, 2, 2500, 50, 'gambar.jpg', '2021-10-12 18:32:35', '2022-05-02 22:03:59', '0000-00-00 00:00:00'),
-(2, 'A0002', 'Minyak Goreng', 4, 4, 2, 20000, 50, 'gambar.jpg', '2021-10-19 22:33:38', '2022-05-02 22:04:42', '0000-00-00 00:00:00'),
-(3, 'A0003', 'Rokok Djarum Super', 6, 6, 1, 20000, 20, 'gambar.jpg', '2021-10-19 22:33:55', '2022-05-02 22:06:50', '0000-00-00 00:00:00'),
-(4, 'A0004', 'Garam Dapur', 4, 5, 1, 2500, 20, 'gambar.jpg', '2021-10-19 22:34:42', '2022-05-02 22:07:20', '0000-00-00 00:00:00'),
-(5, 'A0005', 'Tolak Angin', 3, 2, 1, 3000, 45, 'gambar.jpg', '2021-10-20 21:26:17', '2022-05-02 22:07:51', '0000-00-00 00:00:00'),
-(6, 'A0006', 'Gula Pasir', 4, 4, 1, 10000, 20, 'gambar.jpg', '2021-10-20 22:31:17', '2022-06-15 10:17:34', '0000-00-00 00:00:00'),
-(7, 'A0007', 'Sprit', 2, 1, 3, 5000, 20, 'gambar.jpg', '2022-01-21 18:57:34', '2022-05-02 22:08:52', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_kategori`
+-- Struktur dari tabel `tb_kategori`
 --
 
 CREATE TABLE `tb_kategori` (
@@ -221,71 +203,19 @@ CREATE TABLE `tb_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_kategori`
+-- Dumping data untuk tabel `tb_kategori`
 --
 
 INSERT INTO `tb_kategori` (`id`, `nama_kategori`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Makanan', '2021-10-12 18:31:03', '2021-10-12 18:31:03', '0000-00-00 00:00:00'),
-(2, 'Minuman', '2021-10-12 18:31:07', '2021-10-19 22:19:43', '0000-00-00 00:00:00'),
-(3, 'Obat', '2021-10-19 21:55:08', '2021-10-19 21:56:16', '0000-00-00 00:00:00'),
-(4, 'Sembako', '2021-10-20 21:25:19', '2021-10-20 21:25:30', '0000-00-00 00:00:00'),
-(5, 'Atk', '2022-05-02 21:51:21', '2022-05-02 21:51:21', '0000-00-00 00:00:00'),
-(6, 'Lain-lain', '2022-05-02 22:06:02', '2022-05-02 22:06:02', '0000-00-00 00:00:00');
+(8, 'Teknologi', '2022-08-02 10:58:25', '2022-08-02 10:58:25', '0000-00-00 00:00:00'),
+(9, 'Seni', '2022-08-02 10:58:42', '2022-08-02 10:58:42', '0000-00-00 00:00:00'),
+(10, 'Kesehatan', '2022-08-02 10:59:27', '2022-08-02 10:59:27', '0000-00-00 00:00:00'),
+(11, 'Olahraga', '2022-08-02 10:59:45', '2022-08-02 10:59:45', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pelanggan`
---
-
-CREATE TABLE `tb_pelanggan` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `nama_pelanggan` varchar(100) NOT NULL,
-  `jenkel` varchar(1) NOT NULL,
-  `telp_pelanggan` varchar(20) NOT NULL,
-  `alamat_pelanggan` varchar(100) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_pelanggan`
---
-
-INSERT INTO `tb_pelanggan` (`id`, `nama_pelanggan`, `jenkel`, `telp_pelanggan`, `alamat_pelanggan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Umum', '', '-', '-', '2021-10-12 00:00:00', '2022-05-02 21:52:31', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_pemasok`
---
-
-CREATE TABLE `tb_pemasok` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `nama_pemasok` varchar(100) NOT NULL,
-  `telp_pemasok` varchar(20) NOT NULL,
-  `alamat_pemasok` varchar(100) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_pemasok`
---
-
-INSERT INTO `tb_pemasok` (`id`, `nama_pemasok`, `telp_pemasok`, `alamat_pemasok`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Pt. Jaya Abadi', '98732783', 'Jakarta', '', '2021-10-19 20:44:45', '2022-01-21 18:54:53', '0000-00-00 00:00:00'),
-(2, 'Cv Sejahtera', '98732783', 'Bandung', '', '2021-10-19 21:17:05', '2022-01-21 18:55:08', '0000-00-00 00:00:00'),
-(3, 'Toko Mulia', '09298', 'Bandung', '', '2021-10-20 21:24:37', '2022-05-02 22:05:27', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_pengaturan`
+-- Struktur dari tabel `tb_pengaturan`
 --
 
 CREATE TABLE `tb_pengaturan` (
@@ -295,47 +225,16 @@ CREATE TABLE `tb_pengaturan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_pengaturan`
+-- Dumping data untuk tabel `tb_pengaturan`
 --
 
 INSERT INTO `tb_pengaturan` (`nama_toko`, `no_telp`, `alamat`) VALUES
-('Prototype Online Sto', '081295018034', 'Jl. Babakan Wadana No.39, Cipamokolan, Rancasari, Kota Bandung');
+('BeritaBIU', '081295018034', 'Jl. Babakan Wadana No.39, Cipamokolan, Rancasari, Kota Bandung');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_penjualan`
---
-
-CREATE TABLE `tb_penjualan` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `invoice` varchar(50) NOT NULL,
-  `id_pelanggan` int(11) UNSIGNED NOT NULL,
-  `total_harga` int(11) UNSIGNED NOT NULL,
-  `diskon` int(11) UNSIGNED NOT NULL,
-  `total_akhir` int(11) UNSIGNED NOT NULL,
-  `tunai` int(11) UNSIGNED NOT NULL,
-  `kembalian` int(11) UNSIGNED NOT NULL,
-  `catatan` text NOT NULL,
-  `tanggal` date NOT NULL,
-  `id_user` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(100) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_penjualan`
---
-
-INSERT INTO `tb_penjualan` (`id`, `invoice`, `id_pelanggan`, `total_harga`, `diskon`, `total_akhir`, `tunai`, `kembalian`, `catatan`, `tanggal`, `id_user`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'INV2206150001', 1, 100000, 0, 100000, 100000, 0, '', '2022-06-15', 20, '::1', '2022-06-15 10:17:34', '2022-06-15 10:17:34', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_roles`
+-- Struktur dari tabel `tb_roles`
 --
 
 CREATE TABLE `tb_roles` (
@@ -344,101 +243,18 @@ CREATE TABLE `tb_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_roles`
+-- Dumping data untuk tabel `tb_roles`
 --
 
 INSERT INTO `tb_roles` (`id`, `keterangan`) VALUES
 (1, 'Super Admin'),
 (2, 'Administrator'),
-(3, 'Kasir');
+(3, 'Dosen');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_stok`
---
-
-CREATE TABLE `tb_stok` (
-  `id_stok` int(11) UNSIGNED NOT NULL,
-  `tipe` enum('masuk','keluar') DEFAULT NULL,
-  `id_item` int(11) UNSIGNED NOT NULL,
-  `id_pemasok` int(11) UNSIGNED NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `id_user` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_stok`
---
-
-INSERT INTO `tb_stok` (`id_stok`, `tipe`, `id_item`, `id_pemasok`, `jumlah`, `keterangan`, `id_user`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'masuk', 1, 2, 50, 'belanja', 1, '::1', '2022-05-02 22:09:31', '2022-05-02 22:09:31', '0000-00-00 00:00:00'),
-(2, 'masuk', 6, 1, 30, 'belanja', 1, '::1', '2022-05-02 22:09:47', '2022-05-02 22:09:47', '0000-00-00 00:00:00'),
-(3, 'masuk', 7, 3, 20, 'belanja', 1, '::1', '2022-05-02 22:10:06', '2022-05-02 22:10:06', '0000-00-00 00:00:00'),
-(4, 'keluar', 5, 1, 5, 'rusak', 1, '::1', '2022-05-02 22:10:42', '2022-05-02 22:10:42', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_transaksi`
---
-
-CREATE TABLE `tb_transaksi` (
-  `id_transaksi` int(11) UNSIGNED NOT NULL,
-  `id_penjualan` int(11) UNSIGNED NOT NULL,
-  `id_item` int(11) UNSIGNED NOT NULL,
-  `harga_item` int(11) UNSIGNED NOT NULL,
-  `jumlah_item` int(11) UNSIGNED NOT NULL,
-  `diskon_item` int(11) UNSIGNED NOT NULL,
-  `subtotal` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(100) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_transaksi`
---
-
-INSERT INTO `tb_transaksi` (`id_transaksi`, `id_penjualan`, `id_item`, `harga_item`, `jumlah_item`, `diskon_item`, `subtotal`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 6, 10000, 10, 0, 100000, '::1', '2022-06-15 10:17:34', '2022-06-15 10:17:34', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_unit`
---
-
-CREATE TABLE `tb_unit` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `nama_unit` varchar(50) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_unit`
---
-
-INSERT INTO `tb_unit` (`id`, `nama_unit`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Botol', '2021-10-12 18:31:20', '2022-05-01 16:07:11', '0000-00-00 00:00:00'),
-(2, 'Pcs', '2021-10-12 18:31:25', '2021-10-12 18:31:25', '0000-00-00 00:00:00'),
-(3, 'Buah', '2021-10-12 18:31:29', '2021-10-12 18:31:29', '0000-00-00 00:00:00'),
-(4, 'Kg', '2021-10-19 22:26:05', '2022-05-02 21:57:21', '0000-00-00 00:00:00'),
-(5, 'Gram', '2021-10-20 21:25:42', '2022-05-02 21:58:11', '0000-00-00 00:00:00'),
-(6, 'Bungkus', '2022-05-02 22:06:13', '2022-05-02 22:06:13', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_users`
+-- Struktur dari tabel `tb_users`
 --
 
 CREATE TABLE `tb_users` (
@@ -459,92 +275,44 @@ CREATE TABLE `tb_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_users`
+-- Dumping data untuk tabel `tb_users`
 --
 
 INSERT INTO `tb_users` (`id`, `email`, `username`, `password`, `nama`, `alamat`, `id_role`, `avatar`, `status`, `token`, `ip_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'afterdusk55@gmail.com', 'superadmin', 'admin', 'Super Admin', 'Bandung', 1, 'avatar.jpg', 1, '35083a6ee73d98bd1e535b752c335979562481afed79ae2e627f2deba1c61005', '0.0.0.0', '2021-10-12 18:29:41', '2022-06-15 09:49:17', NULL),
-(2, 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Boyolali', 2, 'avatar.jpg', 1, 'bdbc976f1212965d03dcce1fecbcc811d3c817b7efd1aa61c090b5d7913b895f', '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:03', NULL),
-(3, 'kasir@gmail.com', 'kasir', '$2y$10$eEd2VoX5fOImeW0t20ojpuReyDOwN0i3iFbd9YPaPPCQVqGmjwYeC', 'Kasir', 'Bandung', 3, 'avatar.jpg', 1, NULL, '0.0.0.0', '2021-10-12 18:29:41', '2022-05-02 21:00:08', NULL),
-(20, 'superadmin@gmail.com', 'superadmin1', '$2y$10$Mr2UTVmTnbh5RIt5KPTxYODuhcQgPMikJCRPfsXyGV4w9W7N.8tW.', 'Pemilik', 'Jl.bintara Raya\r\n', 1, 'avatar.jpg', 0, 'ea540a9b4c399334a7329457cfda9fd17d1cbdf6bea7ad44ceba6bebce932bfe', '::1', '2022-06-15 10:13:27', '2022-06-15 10:13:27', NULL);
+(1, 'superadmin@gmail.com', 'superadmin', '$2y$10$Mr2UTVmTnbh5RIt5KPTxYODuhcQgPMikJCRPfsXyGV4w9W7N.8tW.', 'Super Admin', 'Bandung', 1, 'avatar.jpg', 1, '35083a6ee73d98bd1e535b752c335979562481afed79ae2e627f2deba1c61005', '0.0.0.0', '2021-10-12 18:29:41', '2022-08-02 11:01:49', NULL),
+(2, 'admin@gmail.com', 'admin', '$2y$10$hfzTKM5idwbyHgryyI4GbeMMGfltQ.zLbwG8ugvAOMPFFJWc/wunO', 'Administrator', 'Boyolali', 2, '1659413004_158c4fea660c1d18c9e4.jpg', 1, 'bdbc976f1212965d03dcce1fecbcc811d3c817b7efd1aa61c090b5d7913b895f', '0.0.0.0', '2021-10-12 18:29:41', '2022-08-02 11:03:24', NULL),
+(24, 'dosen@gmail.com', 'dosen', '$2y$10$pVO.lEpz0FWdYBtNWF.LleLEYYAFeV6z2PRkGLjX2C.CAmENY6BOu', 'Dosen', 'Jl.bintara Raya\r\n', 3, '1659413218_498ecd440f14465bffb5.jpg', 1, 'ea540a9b4c399334a7329457cfda9fd17d1cbdf6bea7ad44ceba6bebce932bfe', '::1', '2022-06-15 10:13:27', '2022-08-02 11:07:09', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_bulan_tahun`
+-- Indeks untuk tabel `tb_berita`
+--
+ALTER TABLE `tb_berita`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_bulan_tahun`
 --
 ALTER TABLE `tb_bulan_tahun`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_item`
---
-ALTER TABLE `tb_item`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `barcode` (`barcode`),
-  ADD KEY `tb_item_id_unit_foreign` (`id_unit`),
-  ADD KEY `id_kategori_id_unit` (`id_kategori`,`id_unit`),
-  ADD KEY `id_pemasok` (`id_pemasok`);
-
---
--- Indexes for table `tb_kategori`
+-- Indeks untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_pelanggan`
---
-ALTER TABLE `tb_pelanggan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tb_pemasok`
---
-ALTER TABLE `tb_pemasok`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tb_penjualan`
---
-ALTER TABLE `tb_penjualan`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tb_penjualan_id_user_foreign` (`id_user`),
-  ADD KEY `id_pelanggan_id_user` (`id_pelanggan`,`id_user`);
-
---
--- Indexes for table `tb_roles`
+-- Indeks untuk tabel `tb_roles`
 --
 ALTER TABLE `tb_roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_stok`
---
-ALTER TABLE `tb_stok`
-  ADD PRIMARY KEY (`id_stok`),
-  ADD KEY `tb_stok_id_pemasok_foreign` (`id_pemasok`),
-  ADD KEY `tb_stok_id_user_foreign` (`id_user`),
-  ADD KEY `id_item_id_pemasok_id_user` (`id_item`,`id_pemasok`,`id_user`);
-
---
--- Indexes for table `tb_transaksi`
---
-ALTER TABLE `tb_transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `tb_transaksi_id_item_foreign` (`id_item`),
-  ADD KEY `id_penjualan_id_item` (`id_penjualan`,`id_item`);
-
---
--- Indexes for table `tb_unit`
---
-ALTER TABLE `tb_unit`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tb_users`
+-- Indeks untuk tabel `tb_users`
 --
 ALTER TABLE `tb_users`
   ADD PRIMARY KEY (`id`),
@@ -552,111 +320,45 @@ ALTER TABLE `tb_users`
   ADD KEY `id_role` (`id_role`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_bulan_tahun`
+-- AUTO_INCREMENT untuk tabel `tb_berita`
+--
+ALTER TABLE `tb_berita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_bulan_tahun`
 --
 ALTER TABLE `tb_bulan_tahun`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
--- AUTO_INCREMENT for table `tb_item`
---
-ALTER TABLE `tb_item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tb_kategori`
+-- AUTO_INCREMENT untuk tabel `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tb_pelanggan`
---
-ALTER TABLE `tb_pelanggan`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `tb_pemasok`
---
-ALTER TABLE `tb_pemasok`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tb_penjualan`
---
-ALTER TABLE `tb_penjualan`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tb_roles`
+-- AUTO_INCREMENT untuk tabel `tb_roles`
 --
 ALTER TABLE `tb_roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_stok`
---
-ALTER TABLE `tb_stok`
-  MODIFY `id_stok` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tb_transaksi`
---
-ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tb_unit`
---
-ALTER TABLE `tb_unit`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tb_users`
+-- AUTO_INCREMENT untuk tabel `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tb_item`
---
-ALTER TABLE `tb_item`
-  ADD CONSTRAINT `tb_item_id_kategori_foreign` FOREIGN KEY (`id_kategori`) REFERENCES `tb_kategori` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_item_id_pemasok_foreign` FOREIGN KEY (`id_pemasok`) REFERENCES `tb_pemasok` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_item_id_unit_foreign` FOREIGN KEY (`id_unit`) REFERENCES `tb_unit` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `tb_penjualan`
---
-ALTER TABLE `tb_penjualan`
-  ADD CONSTRAINT `tb_penjualan_id_pelanggan_foreign` FOREIGN KEY (`id_pelanggan`) REFERENCES `tb_pelanggan` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_penjualan_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `tb_stok`
---
-ALTER TABLE `tb_stok`
-  ADD CONSTRAINT `tb_stok_id_item_foreign` FOREIGN KEY (`id_item`) REFERENCES `tb_item` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_stok_id_pemasok_foreign` FOREIGN KEY (`id_pemasok`) REFERENCES `tb_pemasok` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_stok_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `tb_transaksi`
---
-ALTER TABLE `tb_transaksi`
-  ADD CONSTRAINT `tb_transaksi_id_item_foreign` FOREIGN KEY (`id_item`) REFERENCES `tb_item` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_transaksi_id_penjualan_foreign` FOREIGN KEY (`id_penjualan`) REFERENCES `tb_penjualan` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `tb_users`
+-- Ketidakleluasaan untuk tabel `tb_users`
 --
 ALTER TABLE `tb_users`
   ADD CONSTRAINT `tb_users_id_role_foreign` FOREIGN KEY (`id_role`) REFERENCES `tb_roles` (`id`) ON UPDATE CASCADE;
